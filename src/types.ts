@@ -1,4 +1,4 @@
-import { Commit } from "vuex"
+import { Commit } from "vuex";
 
 export interface Article {
   id?: number;
@@ -24,10 +24,10 @@ export interface ArticleState {
   _limit: number;
   _start: number;
   _sort: string;
-  articles: Article[]
+  articles: Article[];
 }
 
 export interface ActionsParam {
   state: ArticleState;
-  commit: Commit
+  commit: Commit;
 }

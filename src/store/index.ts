@@ -7,5 +7,5 @@ Vue.use(Vuex);
 import requests from "./modules/requests";
 
 export default new Vuex.Store({
-	modules: { requests },
+  modules: { requests },
 });
