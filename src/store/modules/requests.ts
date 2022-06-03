@@ -26,6 +26,9 @@ export default {
     setArticles(state: ArticleState, articles: Article[]) {
       state.articles.push(...articles);
     },
+    resetArticles(state: ArticleState) {
+      state.articles = [];
+    },
   },
   actions: {
     async getArticles({ state, commit }: ActionsParam) {
