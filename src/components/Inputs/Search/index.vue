@@ -1,5 +1,5 @@
 <template>
-	<input class="search__field field" type="text" placeholder="Search" />
+  <input class="search__field field" type="text" placeholder="Search" />
 </template>
 
 <script lang="ts">
