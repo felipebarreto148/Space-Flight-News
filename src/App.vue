@@ -1,6 +1,7 @@
 <template>
   <main id="app">
     <header-default />
+    <articles />
   </main>
 </template>
 
@@ -10,6 +11,7 @@ import { defineComponent } from "@vue/composition-api";
 export default defineComponent({
   components: {
     HeaderDefault: () => import("@/components/Header/index.vue"),
+    Articles: () => import("@/components/Articles/index.vue"),
   },
 });
 </script>
