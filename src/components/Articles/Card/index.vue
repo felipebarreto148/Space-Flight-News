@@ -15,13 +15,25 @@
       <default-button
         class="card__informations__button"
         label="Ver mais"
+        @clicked="() => open()"
       ></default-button>
     </section>
+
+    <modal ref="cardModal">
+      <modal-card
+        :article="article"
+        :image="image"
+        :title="title"
+        :publishedAt="formatDate"
+        :summary="summary"
+        :close-modal="close"
+      />
+    </modal>
   </section>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 
 // Utils
 import { DateManager } from "@/Utils/dataManager";
@@ -29,6 +41,8 @@ import { DateManager } from "@/Utils/dataManager";
 export default defineComponent({
   components: {
     DefaultButton: () => import("../../Buttons/index.vue"),
+    Modal: () => import("../../Modal/index.vue"),
+    ModalCard: () => import("../ModalCard/index.vue"),
   },
   props: {
     article: { type: Object, required: true, default: () => "" },
@@ -60,15 +74,27 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const cardModal: any = ref(null);
     const dateManager = new DateManager();
     const formatDate = dateManager.convert(props.publishedAt);
     const stylization = {
       "flex-direction": props.index % 2 == 0 ? "row" : "row-reverse",
     };
 
+    function open() {
+      cardModal.value.open();
+    }
+
+    function close() {
+      cardModal.value.close();
+    }
+
     return {
       formatDate,
       stylization,
+      cardModal,
+      open,
+      close,
     };
   },
 });
@@ -80,9 +106,7 @@ export default defineComponent({
 .card {
   display: flex;
   width: 90%;
-  height: 100%;
   max-width: 800px;
-  max-height: 500px;
   column-gap: 50px;
   font-family: "Roboto Condensed", sans-serif;
 
@@ -96,7 +120,7 @@ export default defineComponent({
   &__informations {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     row-gap: 8px;
     width: 100%;
 

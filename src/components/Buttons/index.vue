@@ -46,6 +46,7 @@ export default defineComponent({
   border-radius: 5px;
   cursor: pointer;
   font: 500 18px "Roboto Condensed", sans-serif;
+  max-height: 60px;
 
   &:hover {
     transform: scale3d(0.8, 0.8, 0.8);
