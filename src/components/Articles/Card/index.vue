@@ -2,7 +2,7 @@
   <section class="card" :style="stylization">
     <img class="card__image" :src="image" :alt="title" />
     <section class="card__informations">
-      <h1 class="card__informations__title">{{ clearTitle }}</h1>
+      <h1 class="card__informations__title">{{ title }}</h1>
       <section class="card__informations__subtitles">
         <span class="card__informations__subtitles__date">{{
           formatDate
@@ -61,18 +61,12 @@ export default defineComponent({
   },
   setup(props) {
     const dateManager = new DateManager();
-    const clearTitle = computed(() => {
-      const size = 6;
-      const title = props.title.split(" ").slice(0, size).join(" ");
-      return title + "...";
-    });
     const formatDate = dateManager.convert(props.publishedAt);
     const stylization = {
       "flex-direction": props.index % 2 == 0 ? "row" : "row-reverse",
     };
 
     return {
-      clearTitle,
       formatDate,
       stylization,
     };
