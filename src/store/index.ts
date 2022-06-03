@@ -3,9 +3,9 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+// Modules
+import requests from "./modules/requests";
+
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+	modules: { requests },
 });

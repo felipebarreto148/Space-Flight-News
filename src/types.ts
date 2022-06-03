@@ -1,7 +1,9 @@
+import { Commit } from "vuex"
+
 export interface Article {
-  id: number;
+  id?: number;
   featured?: boolean;
-  title: string;
+  title?: string;
   url?: string;
   imageUrl?: string;
   newsSite?: string;
@@ -12,8 +14,20 @@ export interface Article {
     id: string;
     provider: string;
   }[];
-  events: {
+  events?: {
     id: string;
     provider: string;
   }[];
+}
+
+export interface ArticleState {
+  _limit: number;
+  _start: number;
+  _sort: string;
+  articles: Article[]
+}
+
+export interface ActionsParam {
+  state: ArticleState;
+  commit: Commit
 }
