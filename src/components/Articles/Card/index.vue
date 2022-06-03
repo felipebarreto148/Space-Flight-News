@@ -89,6 +89,7 @@ export default defineComponent({
   &__image {
     width: 40%;
     height: 100%;
+    max-height: 250px;
     border-radius: 3px;
   }
 
