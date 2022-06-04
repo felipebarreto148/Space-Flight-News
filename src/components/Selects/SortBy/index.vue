@@ -8,7 +8,7 @@
   >
     <option value="" selected disabled hidden>Sort</option>
     <option value="publishedAt">Mais Antigas</option>
-    <option value="newer">Mais Novas</option>
+    <option value="">Mais Novas</option>
   </select>
 </template>
 
@@ -23,12 +23,10 @@ export default defineComponent({
     });
 
     async function sortBy() {
-      if (state.sortby == "newer") {
-        await $store.dispatch("getArticles");
-      } else {
-        await $store.commit("setSort", state.sortby);
-        await $store.dispatch("getArticlesBySort");
-      }
+      $store.commit("resetStart");
+      $store.commit("resetArticles");
+      $store.commit("setSort", state.sortby);
+      await $store.dispatch("getArticles");
     }
     return {
       state,

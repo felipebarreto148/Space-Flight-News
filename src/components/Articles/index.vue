@@ -1,7 +1,7 @@
 <template>
   <section class="articles">
     <article-card
-      v-for="(article, index) in state.articles"
+      v-for="(article, index) in articles"
       :key="index"
       :index="index"
       :article="article"
@@ -14,7 +14,7 @@
     <section class="articles__buton">
       <default-button
         label="Carregar mais"
-        v-if="state.articles.length"
+        v-if="articles.length"
         @clicked="() => init()"
       ></default-button>
     </section>
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "@vue/composition-api";
+import { computed, defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
   components: {
@@ -31,17 +31,15 @@ export default defineComponent({
   },
   setup(_, { root }) {
     const $store = root.$store;
-    const state = reactive({
-      articles: $store.getters.articles,
-    });
+    const articles = computed(() => $store.getters.articles);
 
     async function init() {
-      $store.dispatch("getArticles");
+      await $store.dispatch("getArticles");
     }
 
     init();
 
-    return { state, init };
+    return { articles, init };
   },
 });
 </script>

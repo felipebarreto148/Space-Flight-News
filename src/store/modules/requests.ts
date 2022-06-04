@@ -1,9 +1,5 @@
 import { ArticleState, Article, ActionsParam } from "@/types";
-import {
-  getArticles,
-  getArticlesByTitle,
-  getArticlesBySort,
-} from "@/services/modules/articles";
+import { getArticles, getArticlesByTitle } from "@/services/modules/articles";
 
 export default {
   state: () =>
@@ -32,14 +28,7 @@ export default {
   },
   actions: {
     async getArticles({ state, commit }: ActionsParam) {
-      return await getArticles(state._start).then((res: Article[]) => {
-        commit("setArticles", res);
-        commit("setStart");
-        return res;
-      });
-    },
-    async getArticlesByTitle({ state, commit }: ActionsParam, search: string) {
-      return await getArticlesByTitle(state._start, search).then(
+      return await getArticles(state._start, state._sort).then(
         (res: Article[]) => {
           commit("setArticles", res);
           commit("setStart");
@@ -47,8 +36,8 @@ export default {
         }
       );
     },
-    async getArticlesBySort({ state, commit }: ActionsParam) {
-      return await getArticlesBySort(state._start, state._sort).then(
+    async getArticlesByTitle({ state, commit }: ActionsParam, search: string) {
+      return await getArticlesByTitle(state._start, search).then(
         (res: Article[]) => {
           commit("setArticles", res);
           commit("setStart");
