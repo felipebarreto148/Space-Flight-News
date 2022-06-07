@@ -22,6 +22,9 @@
 # Clona o projeto
 git clone https://github.com/felipebarreto148/Space-Flight-News.git
 
-# Instala as dependências
+# Instala as dependências e inicia a aplicação
 docker-compose up
+
+# Acesse em seu navegador
+http://localhost:8080/
 ```
