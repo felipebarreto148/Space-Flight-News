@@ -25,9 +25,6 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 
-// Utils
-import { DateManager } from "@/Utils/dataManager";
-
 export default defineComponent({
   components: {
     DefaultButton: () => import("../../Buttons/index.vue"),
