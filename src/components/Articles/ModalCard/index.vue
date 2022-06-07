@@ -6,7 +6,7 @@
         <h1 class="card__informations__title">{{ title }}</h1>
         <section class="card__informations__subtitles">
           <span class="card__informations__subtitles__date">{{
-            formatDate
+            publishedAt
           }}</span>
         </section>
         <p class="card__informations__summary">{{ summary }}</p>
@@ -59,15 +59,7 @@ export default defineComponent({
       required: false,
       default: () => ({}),
     },
-  },
-  setup(props) {
-    const dateManager = new DateManager();
-    const formatDate = dateManager.convert(props.publishedAt);
-
-    return {
-      formatDate,
-    };
-  },
+  }
 });
 </script>
 
