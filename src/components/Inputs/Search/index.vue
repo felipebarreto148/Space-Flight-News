@@ -20,13 +20,7 @@ export default defineComponent({
     watch(
       () => state.search,
       (value) => {
-        if (value.length) {
-          $store.commit("resetStart");
-          $store.commit("setSearch", value);
-          $store.dispatch("getArticlesByTitle");
-        } else {
-          $store.dispatch("getArticles");
-        }
+        $store.commit("setSearch", value);
       }
     );
 

@@ -7,6 +7,7 @@ export default {
       _limit: 10,
       _start: 0,
       _sort: "",
+      _search: "",
       articles: [],
     },
   mutations: {
@@ -18,6 +19,9 @@ export default {
     },
     setSort(state: ArticleState, sortBy: string) {
       state._sort = sortBy;
+    },
+    setSearch(state: ArticleState, search: string) {
+      state._search = search;
     },
     setArticles(state: ArticleState, articles: Article[]) {
       state.articles.push(...articles);
@@ -48,6 +52,7 @@ export default {
   },
   getters: {
     limit: (state: ArticleState) => state._limit,
+    search: (state: ArticleState) => state._search,
     articles: (state: ArticleState) => state.articles,
   },
 };

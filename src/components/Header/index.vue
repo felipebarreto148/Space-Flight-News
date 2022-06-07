@@ -29,8 +29,8 @@ export default defineComponent({
 @import "@/scss/_variables.scss";
 .header {
   width: 95vw;
-  height: 50%;
-  min-height: 350px;
+  height: 400px;
+  min-height: 400px;
   border-bottom: 2px solid $primary;
   display: flex;
   flex-direction: column;

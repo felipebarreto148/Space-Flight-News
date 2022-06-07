@@ -24,6 +24,7 @@ export interface ArticleState {
   _limit: number;
   _start: number;
   _sort: string;
+  _search: string;
   articles: Article[];
 }
 
